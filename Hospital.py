@@ -16,4 +16,5 @@ class hospital:
         self.__departaments.append(departament)
     #sort departaments by number of patients
     def sortDepsNOP(self):
+        pass
     #sort departaments by patients having the age above a cet
