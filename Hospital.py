@@ -48,5 +48,7 @@ class Hospital:
                 if len(self.departaments[i].patients[j].disease) <= p:
                     printedlist.append(f"{Fore.GREEN}Group {Fore.WHITE}{j//k+1}{Fore.GREEN} from departament {Fore.WHITE}{self.departaments[i].name}{Fore.GREEN}:\n{Fore.WHITE}{self.departaments[i].patients[j:j+k]}")
             return printedlist
-    #may god have mercy on the fuckery that the last 6 fucntions are
-    
+    #may god have mercy on the fuckery that the last 6 functions are
+        
+    def __str__(self):
+        return str(self.departaments)

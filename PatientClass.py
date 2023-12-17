@@ -46,7 +46,7 @@ class Patient:
         self.__disease = disease
 
     def __str__(self):
-        return f"{Fore.GREEN}First Name: {Fore.WHITE}{self.__firstName}\n{Fore.GREEN}Last Name: {Fore.WHITE}{self.__lastName}\n{Fore.GREEN}Personal Code: {Fore.WHITE}{self.__code}\n{Fore.GREEN}Disease: {Fore.WHITE}{self.__disease} {Style.RESET_ALL}"
+        return f"{self.__firstName} {self.__lastName} {Fore.BLUE} {self.__code} {Fore.RED} {self.__disease}{Style.RESET_ALL}\n"
     def __repr__(self):
         return str(self)
     
