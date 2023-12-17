@@ -1,4 +1,12 @@
 from colorama import Fore, Style
+from datetime import date
+
+def calc_age(codes):
+    code = str(codes)
+    if int(code[0:]) < 3:
+        return date.today().year - int("19" + str(code[1:3]))
+    else:
+        return date.today().year - int("20" + str(code[1:3]))
 
 #a patient class that has first name, last name, personal numerical code, and disease
 class Patient:
@@ -7,6 +15,7 @@ class Patient:
         self.__lastName = lastName
         self.__code = code
         self.__disease = disease
+        self.__age = calc_age(self.__code)
     @property
     def firstName(self):
         return self.__firstName
@@ -19,6 +28,9 @@ class Patient:
     @property
     def disease(self):
         return self.__disease
+    @property
+    def age(self):
+        return self.__age
     
     @firstName.setter
     def setFirstName(self, firstName):
@@ -38,3 +50,7 @@ class Patient:
     def __repr__(self):
         return str(self)
     
+if __name__ == "__main__":
+    print("This module is not meant to be run by itself!")
+    input("Press enter to exit...")
+    exit()

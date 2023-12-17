@@ -34,20 +34,19 @@ class Departament:
         self.__numberOfBeds = numberOfBeds
     #for mass adding patients in testing
     @patients.setter
-    def setPatients(self, patients = list):
-        self.__patients.clear()
-        self.__patients = patients[:]
-    #add a patient to the list of patients
-    @patients.setter
-    def addPatient(self, patient = Patient):
-        if len(self.patients) < self.numberOfBeds:
-            self.__patients.append(patient)
-        else:
-            raise Exception("The departament is full!")
+    def addPatient(self, patient):
+        if type(patient) == Patient:
+            if len(self.__patients) < self.__numberOfBeds:
+                self.__patients.append(patient)
+            else:
+                raise Exception("There are no more beds available!")
+        if type(patient) == list:
+            for pacient in range(len(patient)):
+                if len(self.__patients) < self.__numberOfBeds:
+                    self.__patients.append(pacient)
+                else:
+                    raise Exception("There are no more beds available!")
     #remove a patient from the list of patients
-    @patients.setter
-    def removePatient(self, patient):
-        self.__patients.remove(patient)
     
     #sort the patients by personal numerical code:
     def sortPatientsByCode(self):

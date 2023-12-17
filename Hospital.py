@@ -1,6 +1,6 @@
 from DepartamentClass import Departament
 from PatientClass import Patient
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
 from SortingFuncs import srt, flt, srch
 
 #hospital class(which is actually a departament repository) that has a list of departaments
@@ -13,9 +13,6 @@ class Hospital:
     @departaments.setter
     def addDepartament(self, departament):
         self.__departaments.append(departament)
-    @departaments.setter
-    def removeDepartament(self, departament):
-        self.__departaments.remove(departament)
     #sort departaments by number of patients
     def sortDepsNOP(self):
         srt(self.departaments, key=lambda dep: len(dep.patients), reverse=True)
@@ -52,3 +49,4 @@ class Hospital:
                     printedlist.append(f"{Fore.GREEN}Group {Fore.WHITE}{j//k+1}{Fore.GREEN} from departament {Fore.WHITE}{self.departaments[i].name}{Fore.GREEN}:\n{Fore.WHITE}{self.departaments[i].patients[j:j+k]}")
             return printedlist
     #may god have mercy on the fuckery that the last 6 fucntions are
+    
