@@ -28,3 +28,4 @@ def flt(whatever, key = None):
         if not key(whatever[i]):
             whatever.pop(i)
     return whatever
+#ayo
