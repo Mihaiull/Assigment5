@@ -2,7 +2,7 @@ from colorama import Fore, Back, Style
 from os import system
 from time import sleep
 from PatientClass import Patient
-
+from SortingFuncs import srt
 #departament class that has id, name, number of beds, and a list of patients
 class Departament:
     def __init__(self, id, name, numberOfBeds):
@@ -34,12 +34,12 @@ class Departament:
         self.__numberOfBeds = numberOfBeds
     #for mass adding patients in testing
     @patients.setter
-    def setPatients(self, patients):
+    def setPatients(self, patients = list):
         self.__patients.clear()
         self.__patients = patients[:]
     #add a patient to the list of patients
     @patients.setter
-    def addPatient(self, patient):
+    def addPatient(self, patient = Patient):
         if len(self.patients) < self.numberOfBeds:
             self.__patients.append(patient)
         else:
@@ -48,15 +48,10 @@ class Departament:
     @patients.setter
     def removePatient(self, patient):
         self.__patients.remove(patient)
-    #remove all patients from the list of patients
-    @patients.setter
-    def removeAllPatients(self):
-        self.__patients.clear()
     
     #sort the patients by personal numerical code:
     def sortPatientsByCode(self):
-        self.__patients.sort(key=lambda patient: patient.code)
-
+        srt(self.patients, key=lambda patient: patient.code)
 
     def __str__(self):
         return f"{Fore.GREEN}Id: {Fore.WHITE}{self.__id}\n{Fore.GREEN}Name: {Fore.WHITE}{self.__name}\n{Fore.GREEN}Number of beds: {Fore.WHITE}{self.__numberOfBeds}\n{Fore.GREEN}Patients: {Fore.WHITE}{self.__patients} {Style.RESET_ALL}"

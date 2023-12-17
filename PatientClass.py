@@ -1,5 +1,4 @@
-from colorama import Fore, Back, Style
-from os import system
+from colorama import Fore, Style
 
 #a patient class that has first name, last name, personal numerical code, and disease
 class Patient:
