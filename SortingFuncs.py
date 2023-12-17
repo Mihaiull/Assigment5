@@ -3,9 +3,9 @@ def srt(whatever, key = None, reverse = False):
     if key == None:
         key = lambda x: x
     if type(whatever) != list:
-        return ValueError("The argument must be a list")
+        raise ValueError("The argument must be a list")
     if type(reverse) != bool:
-        return ValueError("The reverse argument must be a boolean")
+        raise ValueError("The reverse argument must be a boolean")
     if reverse:
         for i in range(len(whatever)):
             for j in range(len(whatever)):

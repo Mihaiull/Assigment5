@@ -17,4 +17,5 @@ class hospital:
     #sort departaments by number of patients
     def sortDepsNOP(self):
         pass
-    #sort departaments by patients having the age above a cet
+    #sort departaments by patients having the age above a certain value
+    
