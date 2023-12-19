@@ -54,5 +54,5 @@ class Patient:
     
 if __name__ == "__main__":
     print("This module is not meant to be run by itself!")
-    input("Press enter to exit...")
-    exit()
+    from main import main
+    main()

@@ -46,10 +46,5 @@ def srch(whatever, key = None):
 
 if __name__ == "__main__":
     print("This module is not meant to be run by itself!")
-    #a few tests:
-    testList = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-    print(srt(testList, reverse=True))
-    print(srt(testList, key=lambda x: x % 2 == 0))
-    print(flt(testList, key=lambda x: x % 2 == 0))
-    print(srch(testList, key=lambda x: x % 4 == 0))
-    exit()
+    from UI import main
+    main()

@@ -67,3 +67,8 @@ class Hospital:
         
     def __str__(self):
         return f" {' '.join(str(departament) for departament in self.departaments)}"
+    
+if __name__ == "__main__":
+    print("This module is not suposed to be run by itself!")
+    from main import main
+    main()
