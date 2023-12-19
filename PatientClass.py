@@ -46,7 +46,9 @@ class Patient:
         self.__disease = disease
 
     def __str__(self):
+        #printer = ' '.join(list)
         return f"{self.__firstName} {self.__lastName} {Fore.BLUE} {self.__code} {Fore.RED} {self.__disease}{Style.RESET_ALL}\n"
+
     def __repr__(self):
         return str(self)
     

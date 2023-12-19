@@ -53,6 +53,7 @@ class Departament:
         srt(self.patients, key=lambda patient: patient.code)
 
     def __str__(self):
-        return f"{Fore.GREEN}Id: {Fore.WHITE}{self.__id}{Fore.GREEN} Name: {Fore.WHITE}{self.__name}{Fore.GREEN} Number of beds: {Fore.WHITE}{self.__numberOfBeds}\n{Fore.GREEN}Patients: {Fore.WHITE}{self.__patients} {Style.RESET_ALL}"
+        frumusete = ' '.join([str(patient) for patient in self.__patients])
+        return f"{Fore.GREEN}Departament Id: {Fore.WHITE}{self.__id}{Fore.GREEN} Name: {Fore.WHITE}{self.__name}{Fore.GREEN} Number of beds: {Fore.WHITE}{self.__numberOfBeds}\n{Fore.GREEN}Patients:\n {Fore.WHITE}{frumusete}{Style.RESET_ALL}"
     def __repr__(self):
-        return str(self)
+        return str(self, end="\n2")

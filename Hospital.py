@@ -13,6 +13,21 @@ class Hospital:
     @departaments.setter
     def addDepartament(self, departament):
         self.__departaments.append(departament)
+    #remove a patient from a departament
+    def removePatient(self, depindex, code):
+        for i in range(len(self.departaments[depindex].patients)-1, -1, -1):
+            if self.departaments[depindex].patients[i].code == code:
+                self.departaments[depindex].patients.pop(i)
+                return f"{Fore.GREEN}'Patient removed successfully!'{Style.RESET_ALL}"
+            raise Exception("Patient not found!")
+        raise Exception("Departament not found!")
+    #remove a departament from the list of departaments
+    def removeDepartament(self, id):
+        for i in range(len(self.departaments)-1, -1, -1):
+            if self.departaments[i].id == id:
+                self.departaments.pop(i)
+                return
+        raise Exception("Departament not found!")
     #sort departaments by number of patients
     def sortDepsNOP(self):
         srt(self.departaments, key=lambda dep: len(dep.patients), reverse=True)
@@ -51,4 +66,4 @@ class Hospital:
     #may god have mercy on the fuckery that the last 6 functions are
         
     def __str__(self):
-        return str(self.departaments)
+        return f" {' '.join(str(departament) for departament in self.departaments)}"

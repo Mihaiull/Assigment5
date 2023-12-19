@@ -42,7 +42,7 @@ def srch(whatever, key = None):
             searched.append(whatever[i])
     if len(searched) > 0:
         return searched
-    return None
+    return []
 
 if __name__ == "__main__":
     print("This module is not meant to be run by itself!")
@@ -52,6 +52,4 @@ if __name__ == "__main__":
     print(srt(testList, key=lambda x: x % 2 == 0))
     print(flt(testList, key=lambda x: x % 2 == 0))
     print(srch(testList, key=lambda x: x % 4 == 0))
-    #hide other keys pressed in the terminal:
-    input("Press any key to exit...")
     exit()
