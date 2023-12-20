@@ -4,9 +4,6 @@ from random import choice as choice
 def generator(repository, numberOfDepartaments = 15, numberOfPatients = 20):
     from DepartamentClass import Departament
     from PatientClass import Patient
-    #this functions generates 15 departaments with 20 patients each:
-    #nu am scris inca funtia asta imi urez bafta charlie
-
     #dictionary for first names:
     firstName_dict:dict
     firstName_dict = {1:'Mihai', 2:'Alexandru', 3:'Marius', 4:'Geanina', 5:'Gabriel', 6:'Teodora(fara th)', 7:'Diana', 8:'Valentin', 9:'Dorian', 10:'Luis', 11:'Lucretia', 12:'Bogdan', 13:'Cristian', 14:'Cristina', 15:'Geani', 16:'Giddeon'}
