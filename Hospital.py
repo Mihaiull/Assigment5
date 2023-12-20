@@ -69,11 +69,6 @@ class Hospital:
         return f" {' '.join(str(departament) for departament in self.departaments)}"
     
 if __name__ == "__main__":
-    print("This module is not suposed to be run by itself!")
+    print("This module is not meant to be run by itself!")
     from main import main
     main()
-
-def generator():
-    #this functions generates 15 departaments with 20 patients each:
-    #nu am scris inca funtia asta imi urez bafta charlie
-    pass

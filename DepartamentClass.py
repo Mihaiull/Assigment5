@@ -60,5 +60,5 @@ class Departament:
     
 if __name__ == "__main__":
     print("This module is not meant to be run by itself!")
-    from UI import main
+    from main import main
     main()

@@ -1,0 +1,1 @@
+#le scriu pe tren doamne fereste sa le fac acum
