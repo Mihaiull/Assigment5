@@ -36,9 +36,12 @@ class Hospital:
         srt(self.departaments, key=lambda dep: len(srch(dep.patients, key=lambda patient: patient.age > age)), reverse=True)
     #sort departaments by number of patients and sort the patients in each departament alphabetically
     def sortuVietiiMele(self):
+        #already have a function for the first half
         self.sortDepsNOP()
+        #sort the patients in each departament alphabetically
         for i in range(len(self.departaments)):
-            srt(self.departaments[i].patients, key=lambda patient: patient.lastName)
+            srt(self.departaments[i].patients, key=lambda patient: patient.lastName[0])
+        
     #identify departaments which containes patiens under a given age
     def filterDepsAge(self, age):
         return flt(self.departaments, key=lambda dep: len(srch(dep.patients, key=lambda patient: patient.age < age)))
@@ -56,7 +59,7 @@ class Hospital:
                 printedlist.append(f"{Fore.GREEN}Group {Fore.WHITE}{j//k+1}{Fore.GREEN} from departament {Fore.WHITE}{self.departaments[i].name}{Fore.GREEN}:\n{Fore.WHITE}{self.departaments[i].patients[j:j+k]}")
             return printedlist
     #form groups of k departaments having at most p patients that suffer from the same disease(k and p are given)
-    def formKGroupsInEachDep(self, k, p):
+    def formKGroupsInEachDepCuP(self, k, p):
         printedlist = []
         for i in range(0, len(self.departaments), k):
             for j in range(len(self.departaments[i].patients)):

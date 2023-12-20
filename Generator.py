@@ -1,7 +1,7 @@
 from random import randint as rand
 from random import choice as choice
 
-def generator(repository, numberOfDepartaments = 15, numberOfPatients = 20):
+def generator(repository, numberOfDepartaments = 15, maxNumberOfPatients = 20):
     from DepartamentClass import Departament
     from PatientClass import Patient
     #dictionary for first names:
@@ -10,12 +10,12 @@ def generator(repository, numberOfDepartaments = 15, numberOfPatients = 20):
     #dictionary for last names:
     lastName_dict = {1:'De la Suceava', 2:"Pescaru'", 3:'Popa', 4:'Vijelie', 5:'Stan', 6:'Visinoiu', 7:"Izotericu'", 8:'Mirabeliu', 9:'Hanu', 10:'Catanas', 11:'Serifu Thauu', 12:'Ghilencea', 13:'Vilcu', 14:"De La Sinaia", 15:"Milionaru'", 16:"Shefu'"}
     #dictionary for diseases:
-    disease_dict = {1:'Cancer', 2:'Sifilis', 3:'Ebola', 4:'Covid-19', 5:'Utilizator Arch Linux', 6:'Manelist', 7:'Windows enjoyer', 8:'Boala Copiilor', 9:'Conducator BMW', 10:'Conducator Audi', 11:'Bombardier', 12:'Nu stie sa numere indexurile la dict',13:'Mort', 14:'Viu', 15:'Impiedicat', 16:'Analfabet'}
+    disease_dict = {1:'Cancer', 2:'Fole', 3:'Ebola', 4:'Covid-19', 5:'Utilizator Arch Linux', 6:'Manelist', 7:'Windows enjoyer', 8:'Boala Copiilor', 9:'Conducator BMW', 10:'Conducator Audi', 11:'Bombardier', 12:'Nu stie sa numere indexurile la dict',13:'Mort', 14:'Viu', 15:'Impiedicat', 16:'Analfabet'}
     #dictionary for departaments:
     departament_dict = {0:'Cardiologie', 1:'Neurologie', 2:"Efectiv Spitalu' 9", 3:'Pediatrie', 4:'Unixologie', 5:'Dermatologie', 6:'Chirurgie', 7:'Ortopedie', 8:'Audiologie', 9:'Nebunie', 10:'Oftalmologie', 11:'O.R.L.', 12:'Stomatologie', 13:'Endocrinologie', 14:'Diabet', 15:'Lift(s-a umplut spitalu punem unde putem)'}
     for i in range(numberOfDepartaments):
         repository.departaments.append(Departament(i+1, departament_dict[i], rand(17, 30)))
-        for j in range(numberOfPatients):
+        for j in range(rand(1, maxNumberOfPatients)):
             repository.departaments[i].patients.append(Patient(firstName_dict[rand(1, 16)], lastName_dict[rand(1, 16)], codeGen(), disease_dict[rand(1, 16)]))
         
 

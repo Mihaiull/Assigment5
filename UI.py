@@ -111,14 +111,11 @@ def UI():
                 code = int(input("CNP: "))
                 print("Input the patient's data:")
                 code = int(input("CNP: "))
-                for j in range (len(hospital.departaments[index].patients)):
-                    if hospital.departaments[index].patients[j].code == code:
-                        hospital.departaments[index].patients.pop(j)
-                        system("cls||clear")
-                        print(f"{Fore.GREEN}Patient removed successfully!{Style.RESET_ALL}")
-                        sleep(0.3)
-                        system("cls||clear")
-                        break
+                hospital.removePatient(index, code)
+                system("cls||clear")
+                print(f"{Fore.GREEN}Patient removed successfully!{Style.RESET_ALL}")
+                sleep(0.3)
+                system("cls||clear")
             elif option == '5':
                 #sort departaments by number of patients
                 system("cls||clear")
@@ -180,7 +177,7 @@ def UI():
                 k = int(input("k: "))
                 p = int(input("p: "))
                 print(f"{Fore.GREEN}Groups formed successfully!{Style.RESET_ALL}\n")
-                print(hospital.formKGroupsInEachDep(k, p))
+                print(hospital.formKGroupsInEachDepCuP(k, p))
                 sleep(0.3)
                 system("cls||clear")
             else:
