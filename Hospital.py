@@ -13,6 +13,10 @@ class Hospital:
     @departaments.setter
     def addDepartament(self, departament):
         self.__departaments.append(departament)
+    #print only departaments
+    def printDeps(self):
+        for i in range(len(self.departaments)):
+            print(self.departaments.minimalPrint())
     #remove a patient from a departament
     def removePatient(self, depindex, code):
         for i in range(len(self.departaments[depindex].patients)-1, -1, -1):

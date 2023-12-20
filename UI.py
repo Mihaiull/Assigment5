@@ -22,15 +22,18 @@ def UI():
             if option == '0':
                 #exit
                 break
-            elif option == 'print':
-                option2 = input("0. Print all\n3 1. Print departaments\n2. Print patients\n")
+            elif option == 'p':
+                option2 = input("0. Print all\n1. Print departaments\n2. Print patients\n")
                 if option2 == '0':
                     print(hospital)
+                    input("Press enter to continue...")
                 elif option2 == '1':
-                    print(hospital.departaments)
+                    hospital.printDeps()
+                    input("Press enter to continue...")
                 elif option2 == '2':
                     for i in range(len(hospital.departaments)):
                         print(hospital.departaments[i].patients)
+                    input("Press enter to continue...")
                 else:
                     system("cls||clear")
                     raise TypeError("Invalid option!")
@@ -187,14 +190,17 @@ def UI():
         print(f"{Fore.RED}{e}{Style.RESET_ALL}")
         sleep(1)
         system("cls||clear")
+        UI()
     except TypeError as e:
         print(f"{Fore.RED}{e}{Style.RESET_ALL}")
         sleep(1)
         system("cls||clear")
+        UI()
     except Exception as e:
         print(f"{Fore.RED}{e}{Style.RESET_ALL}")
         sleep(1)
         system("cls||clear")
+        UI()
 
 
 if __name__ == "__main__":

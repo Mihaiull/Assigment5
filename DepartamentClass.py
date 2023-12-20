@@ -51,12 +51,15 @@ class Departament:
     #sort the patients by personal numerical code:
     def sortPatientsByCode(self):
         srt(self.patients, key=lambda patient: patient.code)
+    
+    def minimalPrint(self):
+        return f"{Fore.GREEN}Departament Id: {Fore.WHITE}{self.__id}{Fore.GREEN} Name: {Fore.WHITE}{self.__name}{Fore.GREEN} Number of beds: {Fore.WHITE}{self.__numberOfBeds}{Style.RESET_ALL}"
 
     def __str__(self):
         frumusete = ' '.join([str(patient) for patient in self.__patients])
         return f"{Fore.GREEN}Departament Id: {Fore.WHITE}{self.__id}{Fore.GREEN} Name: {Fore.WHITE}{self.__name}{Fore.GREEN} Number of beds: {Fore.WHITE}{self.__numberOfBeds}\n{Fore.GREEN}Patients:\n {Fore.WHITE}{frumusete}{Style.RESET_ALL}"
     def __repr__(self):
-        return str(self, end="\n2")
+        return str(self, end="\n")
     
 if __name__ == "__main__":
     print("This module is not meant to be run by itself!")
