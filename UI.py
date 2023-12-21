@@ -101,8 +101,8 @@ def UI():
                 #remove a patient
                 system("cls||clear")
                 id = int(input("Enter the id of the departament you want to remove a patient from: "))
+                index = -1
                 for i in range(len(hospital.departaments)):
-                    index = -1
                     if hospital.departaments[i].id == id:
                         index = i
                         system("cls||clear")
@@ -111,20 +111,19 @@ def UI():
                 if index == -1:
                     system("cls||clear")
                     raise Exception("Departament not found!")
-                code = int(input("CNP: "))
                 print("Input the patient's data:")
                 code = int(input("CNP: "))
                 hospital.removePatient(index, code)
                 system("cls||clear")
                 print(f"{Fore.GREEN}Patient removed successfully!{Style.RESET_ALL}")
-                sleep(0.3)
+                sleep(0.5)
                 system("cls||clear")
             elif option == '5':
                 #sort departaments by number of patients
                 system("cls||clear")
                 hospital.sortDepsNOP()
                 print(f"{Fore.GREEN}Departaments sorted successfully!{Style.RESET_ALL}")
-                sleep(0.3)
+                sleep(0.5)
                 system("cls||clear")
             elif option == '6':
                 #sort departaments by patients having the age above a certain value
@@ -132,22 +131,23 @@ def UI():
                 age = int(input("Age: "))
                 hospital.sortDepsAge(age)
                 print(f"{Fore.GREEN}Departaments sorted successfully!{Style.RESET_ALL}")
-                sleep(0.3)
+                sleep(0.5)
                 system("cls||clear")
             elif option == '7':
                 #sort departaments by number of patients and sort the patients in each departament alphabetically
                 system("cls||clear")
                 hospital.sortuVietiiMele()
                 print(f"{Fore.GREEN}Departaments sorted successfully!{Style.RESET_ALL}")
-                sleep(0.3)
+                sleep(0.5)
                 system("cls||clear")
             elif option == '8':
                 #identify departaments which containes patiens under a given age
                 system("cls||clear")
                 age = int(input("Age: "))
                 print(f"{Fore.GREEN}Departaments found!{Style.RESET_ALL}\n")
-                print(hospital.filterDepsAge(age))
                 sleep(0.3)
+                print(hospital.filterDepsAge(age))
+                input("Press enter to continue...")
                 system("cls||clear")
             elif option == '9':
                 #indentify patients from a given departament which contain a given string in their firstName or lastName
@@ -155,24 +155,27 @@ def UI():
                 id = int(input("Enter the id of the departament you want to search patients in: "))
                 string = input("String: ")
                 print(f"{Fore.GREEN}Patients found!{Style.RESET_ALL}\n")
-                print(hospital.searchPatients(id, string))
                 sleep(0.3)
+                print(hospital.searchPatients(id, string))
+                input("Press enter to continue...")
                 system("cls||clear")
             elif option == '10':
                 #indentify departaments which contain patients with a given first name
                 system("cls||clear")
                 firstName = input("First name: ")
                 print(f"{Fore.GREEN}Departaments found!{Style.RESET_ALL}\n")
-                print(hospital.filterDepsName(firstName))
                 sleep(0.3)
+                print(hospital.filterDepsName(firstName))
+                input("Press enter to continue...")
                 system("cls||clear")
             elif option == '11':
                 #form groups of k patiens from the same departaments with the same disease(k is given)
                 system("cls||clear")
                 k = int(input("k: "))
                 print(f"{Fore.GREEN}Groups formed successfully!{Style.RESET_ALL}\n")
-                print(hospital.formKGroupsInEachDep(k))
                 sleep(0.3)
+                print(hospital.formKGroupsInEachDep(k))
+                input("Press enter to continue...")
                 system("cls||clear")
             elif option == '12':
                 #form groups of k departaments having at most p patients that suffer from the same disease(k and p are given)
@@ -180,8 +183,9 @@ def UI():
                 k = int(input("k: "))
                 p = int(input("p: "))
                 print(f"{Fore.GREEN}Groups formed successfully!{Style.RESET_ALL}\n")
-                print(hospital.formKGroupsInEachDepCuP(k, p))
                 sleep(0.3)
+                print(hospital.formKGroupsInEachDepCuP(k, p))
+                input("Press enter to continue...")
                 system("cls||clear")
             else:
                 system("cls||clear")

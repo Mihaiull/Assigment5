@@ -32,7 +32,6 @@ class Departament:
     @numberOfBeds.setter
     def setNumberOfBeds(self, numberOfBeds):
         self.__numberOfBeds = numberOfBeds
-    #for mass adding patients in testing
     @patients.setter
     def addPatient(self, patient):
         if type(patient) == Patient:
@@ -45,9 +44,7 @@ class Departament:
                 if len(self.__patients) < self.__numberOfBeds:
                     self.__patients.append(pacient)
                 else:
-                    raise Exception("There are no more beds available!")
-    #remove a patient from the list of patients
-    
+                    raise Exception("There are no more beds available!")    
     #sort the patients by personal numerical code:
     def sortPatientsByCode(self):
         srt(self.patients, key=lambda patient: patient.code)
