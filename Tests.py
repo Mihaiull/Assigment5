@@ -108,13 +108,14 @@ def testRemoveDepartament():
     dep = Departament(3, 'Oncology', 10)
     repository.departaments.append(dep)
     repository.removeDepartament(1)
+    print (len(repository.departaments))
     assert len(repository.departaments) == 2, 'Departament not removed correctly! (1)'
-    assert repository.departaments[0].name == 'Cardiology', 'Departament not removed correctly! (1)'
+    assert repository.departaments[0].name == 'Neurology', 'Departament not removed correctly! (1)'
     print(f"{Fore.GREEN}RemoveDepartament_1 tested successfully!{Style.RESET_ALL}")
     sleep(0.02)
     repository.removeDepartament(2)
     assert len(repository.departaments) == 1, 'Departament not removed correctly! (2)'
-    assert repository.departaments[0].name == 'Cardiology', 'Departament not removed correctly! (2)'
+    assert repository.departaments[0].name == 'Oncology', 'Departament not removed correctly! (2)'
     print(f"{Fore.GREEN}RemoveDepartament_2 tested successfully!{Style.RESET_ALL}")
     sleep(0.02)
     repository.removeDepartament(3)
@@ -140,17 +141,17 @@ def testSortDepsNOP():
     repository.departaments[1].patients.append(Patient('John', 'Doe', '1960115123459', 'heart disease'))
     repository.departaments[1].patients.append(Patient('Jane', 'Doe', '1960115123450', 'heart disease'))
     repository.departaments[2].patients.append(Patient('Maleu', 'Testere', '1960015123451', 'heart disease'))
-    assert repository.sortDepNOP() == [repository.departaments[1], repository.departaments[0], repository.departaments[2]], 'Departaments not sorted correctly!(1)'
+    assert repository.sortDepsNOP() == [repository.departaments[1], repository.departaments[0], repository.departaments[2]], 'Departaments not sorted correctly!(1)'
     print(f"{Fore.GREEN}SortDepsNOP_1 tested successfully!{Style.RESET_ALL}")
     sleep(0.02)
     repository.departaments[0].patients.append(Patient('John', 'Doe', '1960115123452', 'heart disease'))
-    assert repository.sortDepNOP() == [repository.departaments[0], repository.departaments[1], repository.departaments[2]], 'Departaments not sorted correctly!(2)'
+    assert repository.sortDepsNOP() == [repository.departaments[0], repository.departaments[1], repository.departaments[2]], 'Departaments not sorted correctly!(2)'
     print(f"{Fore.GREEN}SortDepsNOP_2 tested successfully!{Style.RESET_ALL}")
     sleep(0.02)
     repository.departaments[2].patients.append(Patient('John', 'Doe', '1960115123453', 'heart disease'))
     repository.departaments[2].patients.append(Patient('John', 'Doe', '1960115123454', 'heart disease'))
     repository.departaments[2].patients.append(Patient('John', 'Doe', '1960115123455', 'heart disease'))
-    assert repository.sortDepNOP() == [repository.departaments[2], repository.departaments[1], repository.departaments[0]], 'Departaments not sorted correctly!(3)'
+    assert repository.sortDepsNOP() == [repository.departaments[2], repository.departaments[1], repository.departaments[0]], 'Departaments not sorted correctly!(3)'
     print(f"{Fore.GREEN}SortDepsNOP_3 tested successfully!{Style.RESET_ALL}")
     sleep(0.02)
     print(f"{Fore.LIGHTGREEN_EX}SortDepsNOP tested successfully!{Style.RESET_ALL}")

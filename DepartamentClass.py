@@ -44,7 +44,7 @@ class Departament:
                 if len(self.__patients) < self.__numberOfBeds:
                     self.__patients.append(pacient)
                 else:
-                    raise Exception("There are no more beds available!")    
+                    raise Exception("There are no more beds available!")                    
     #sort the patients by personal numerical code:
     def sortPatientsByCode(self):
         srt(self.patients, key=lambda patient: patient.code)

@@ -16,7 +16,7 @@ class Hospital:
     #print only departaments
     def printDeps(self):
         for i in range(len(self.departaments)):
-            print(self.departaments.minimalPrint())
+            print(self.departaments[i].minimalPrint())
     #remove a patient from a departament
     def removePatient(self, depindex, code):
         for i in range(len(self.departaments[depindex].patients)):
@@ -26,9 +26,9 @@ class Hospital:
         return f"{Fore.RED}'Patient not found!'{Style.RESET_ALL}"
     #remove a departament from the list of departaments
     def removeDepartament(self, id):
-        for i in range(len(self.departaments)-1, -1, -1):
-            if self.departaments[i].id == id:
-                self.departaments.pop(i)
+        for departament in self.departaments:
+            if departament.id == id:
+                self.departaments.remove(departament)
                 return
         raise Exception("Departament not found!")
     #sort departaments by number of patients
