@@ -22,15 +22,14 @@ def UI():
             if option == '0':
                 #exit
                 break
-            elif option == 'p':
-                option2 = input("0. Print all\n1. Print departaments\n2. Print patients\n")
-                if option2 == '0':
+            elif option[0:1] == 'p':
+                if option[1:2] == 'a':
                     print(hospital)
                     input("Press enter to continue...")
-                elif option2 == '1':
+                elif option[1:2] == 'd':
                     hospital.printDeps()
                     input("Press enter to continue...")
-                elif option2 == '2':
+                elif option[1:2] == 'p':
                     for i in range(len(hospital.departaments)):
                         print(hospital.departaments[i].patients)
                     input("Press enter to continue...")

@@ -141,22 +141,30 @@ def testSortDepsNOP():
     repository.departaments[1].patients.append(Patient('John', 'Doe', '1960115123459', 'heart disease'))
     repository.departaments[1].patients.append(Patient('Jane', 'Doe', '1960115123450', 'heart disease'))
     repository.departaments[2].patients.append(Patient('Maleu', 'Testere', '1960015123451', 'heart disease'))
-    assert repository.sortDepsNOP() == [repository.departaments[1], repository.departaments[0], repository.departaments[2]], 'Departaments not sorted correctly!(1)'
+    repository.sortDepsNOP()
+    assert repository.departaments[0].name == 'Neurology', 'Departaments not sorted correctly!(1)'
+    assert repository.departaments[1].name == 'Cardiology', 'Departaments not sorted correctly!(1)'
+    assert repository.departaments[2].name == 'Oncology', 'Departaments not sorted correctly!(1)'
     print(f"{Fore.GREEN}SortDepsNOP_1 tested successfully!{Style.RESET_ALL}")
     sleep(0.02)
     repository.departaments[0].patients.append(Patient('John', 'Doe', '1960115123452', 'heart disease'))
-    assert repository.sortDepsNOP() == [repository.departaments[0], repository.departaments[1], repository.departaments[2]], 'Departaments not sorted correctly!(2)'
+    repository.sortDepsNOP()
+    assert repository.departaments[0].name == 'Neurology', 'Departaments not sorted correctly!(1)'
+    assert repository.departaments[1].name == 'Cardiology', 'Departaments not sorted correctly!(1)'
+    assert repository.departaments[2].name == 'Oncology', 'Departaments not sorted correctly!(1)'
     print(f"{Fore.GREEN}SortDepsNOP_2 tested successfully!{Style.RESET_ALL}")
     sleep(0.02)
     repository.departaments[2].patients.append(Patient('John', 'Doe', '1960115123453', 'heart disease'))
     repository.departaments[2].patients.append(Patient('John', 'Doe', '1960115123454', 'heart disease'))
     repository.departaments[2].patients.append(Patient('John', 'Doe', '1960115123455', 'heart disease'))
-    assert repository.sortDepsNOP() == [repository.departaments[2], repository.departaments[1], repository.departaments[0]], 'Departaments not sorted correctly!(3)'
+    repository.sortDepsNOP()
+    assert repository.departaments[0].name == 'Neurology', 'Departaments not sorted correctly!(1)'
+    assert repository.departaments[1].name == 'Oncology', 'Departaments not sorted correctly!(1)'
+    assert repository.departaments[2].name == 'Cardiology', 'Departaments not sorted correctly!(1)'
     print(f"{Fore.GREEN}SortDepsNOP_3 tested successfully!{Style.RESET_ALL}")
     sleep(0.02)
     print(f"{Fore.LIGHTGREEN_EX}SortDepsNOP tested successfully!{Style.RESET_ALL}")
     sleep(0.02)
-
 def testSortDepsAge():
     pass
     print(f"{Fore.BLUE}Testing SortDepsAge...{Style.RESET_ALL}")
@@ -194,8 +202,36 @@ def testFilterDepsAge():
     repository.departaments.append(dep)
     dep = Departament(3, 'Oncology', 10)
     repository.departaments.append(dep)
-    #mno aici baga cnp-uri valide ca sa poata sa interpreteze varsta v2.0
-
+    repository.departaments[0].patients.append(Patient('John', 'Doe', '1960000000000', 'test'))
+    repository.departaments[0].patients.append(Patient('Jane', 'Doe', '5020000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('Maleu', 'Test', '1960000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('John', 'Doe', '5030000000000', 'test'))
+    repository.departaments[2].patients.append(Patient('Jane', 'Doe', '1560000000000', 'test'))
+    repository.filterDepsAge(60)
+    assert repository.departaments[0].name == 'Cardiology', 'Departaments not filtered correctly!(1)'
+    assert repository.departaments[1].name == 'Neurology', 'Departaments not filtered correctly!(1)'
+    assert repository.departaments[2].name == 'Oncology', 'Departaments not filtered correctly!(1)'
+    print(f"{Fore.GREEN}FilterDepsAge_1 tested successfully!{Style.RESET_ALL}")
+    sleep(0.02)
+    repository.departaments[0].patients.append(Patient('John', 'Doe', '1960000000000', 'test'))
+    repository.departaments[2].patients.append(Patient('Jane', 'Doe', '1560000000000', 'test'))
+    repository.filterDepsAge(50)
+    assert repository.departaments[0].name == 'Cardiology', 'Departaments not filtered correctly!(2)'
+    assert repository.departaments[1].name == 'Neurology', 'Departaments not filtered correctly!(2)'
+    assert repository.departaments[2].name == 'Oncology', 'Departaments not filtered correctly!(2)'
+    print(f"{Fore.GREEN}FilterDepsAge_2 tested successfully!{Style.RESET_ALL}")
+    sleep(0.02)
+    repository.departaments[0].patients.append(Patient('John', 'Doe', '1960000000000', 'test'))
+    repository.departaments[2].patients.append(Patient('Jane', 'Doe', '1560000000000', 'test'))
+    repository.filterDepsAge(15)
+    assert repository.departaments[0].name == 'Cardiology', 'Departaments not filtered correctly!(3)'
+    assert repository.departaments[1].name == 'Neurology', 'Departaments not filtered correctly!(3)'
+    assert repository.departaments[2].name == 'Oncology', 'Departaments not filtered correctly!(3)'
+    print(f"{Fore.GREEN}FilterDepsAge_3 tested successfully!{Style.RESET_ALL}")
+    sleep(0.02)
+    print(f"{Fore.LIGHTGREEN_EX}FilterDepsAge tested successfully!{Style.RESET_ALL}")
+    sleep(0.02)
+    
 def testSearchPatients():
     print(f"{Fore.BLUE}Testing SearchPatients...{Style.RESET_ALL}")
     sleep(0.02)
@@ -271,33 +307,33 @@ def testFormKGroupsInEachDepCuP():
     repository.departaments.append(dep)
 
 def testAll():
-    try:    
-        testAddDepartament()
-        testAddPatient()
-        testRemovePatient()
-        testRemoveDepartament()
-        testSortDepsNOP()
-        testSortDepsAge()
-        testSortuVietiiMele()
-        testFilterDepsAge()
-        testSearchPatients()
-        testFilterDepsName()
-        testFormKGroupsInEachDep()
-        testFormKGroupsInEachDepCuP()
-    except AssertionError as ae:
-        print(f"{Fore.RED}{ae}{Style.RESET_ALL}")
-        sleep(0.02)
-        print(f"{Back.RED}{Fore.LIGHTRED_EX}Tests failed!{Style.RESET_ALL}")
-        sleep(0.02)
-        return
-    except Exception as ex:
-        print(f"{Fore.RED}{ex}{Style.RESET_ALL}")
-        sleep(0.02)
-        print(f"{Back.RED}{Fore.LIGHTRED_EX}Tests failed!{Style.RESET_ALL}")
-        sleep(0.02)
-        return
+    # try:    
+    testAddDepartament()
+    testAddPatient()
+    testRemovePatient()
+    testRemoveDepartament()
+    testSortDepsNOP()
+    testSortDepsAge()
+    testSortuVietiiMele()
+    testFilterDepsAge()
+    testSearchPatients()
+    testFilterDepsName()
+    testFormKGroupsInEachDep()
+    testFormKGroupsInEachDepCuP()
+    # except AssertionError as ae:
+    #     print(f"{Fore.RED}{ae}{Style.RESET_ALL}")
+    #     sleep(0.02)
+    #     print(f"{Back.RED}{Fore.LIGHTRED_EX}Tests failed!{Style.RESET_ALL}")
+    #     sleep(0.02)
+    #     return
+    # except Exception as ex:
+    #     print(f"{Fore.RED}{ex}{Style.RESET_ALL}")
+    #     sleep(0.02)
+    #     print(f"{Back.RED}{Fore.LIGHTRED_EX}Tests failed!{Style.RESET_ALL}")
+    #     sleep(0.02)
+    #     return
     print(f"{Fore.LIGHTGREEN_EX}Tests passed successfully!{Style.RESET_ALL}")
-    sleep(1)
+    sleep(2)
     system('cls||clear')
     
 if __name__ == "__main__":
