@@ -174,12 +174,42 @@ def testSortDepsAge():
     repository.departaments.append(dep)
     dep = Departament(2, 'Neurology', 15)
     repository.departaments.append(dep)
-    dep = Departament(3, 'Oncology', 10)
+    repository.departaments[0].patients.append(Patient('test', 'testescu', '1960000000000', 'test'))
+    repository.departaments[0].patients.append(Patient('test', 'testescu', '1970000000000', 'test'))
+    repository.departaments[0].patients.append(Patient('test', 'testescu', '1980000000000', 'test'))
+    repository.departaments[0].patients.append(Patient('test', 'testescu', '1990000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('test', 'testescu', '5000000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('test', 'testescu', '5010000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('test', 'testescu', '5020000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('test', 'testescu', '5030000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('test', 'testescu', '5040000000000', 'test'))
+    repository.sortDepsAge(25)
+    assert repository.departaments[0].name == 'Cardiology', 'Departaments not sorted correctly!(1)'
+    assert repository.departaments[1].name == 'Neurology', 'Departaments not sorted correctly!(1)'
+    print(f"{Fore.GREEN}SortDepsAge_1 tested successfully!{Style.RESET_ALL}")
+    repository.departaments.clear()
+    dep = Departament(1, 'Cardiology', 20)
     repository.departaments.append(dep)
-    #mno aici baga cnp-uri valide ca sa poata sa interpreteze varsta
+    dep = Departament(2, 'Neurology', 15)
+    repository.departaments.append(dep)
+    repository.departaments[1].patients.append(Patient('test', 'testescu', '1960000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('test', 'testescu', '1970000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('test', 'testescu', '1980000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('test', 'testescu', '1990000000000', 'test'))
+    repository.departaments[0].patients.append(Patient('test', 'testescu', '5000000000000', 'test'))
+    repository.departaments[0].patients.append(Patient('test', 'testescu', '5010000000000', 'test'))
+    repository.departaments[0].patients.append(Patient('test', 'testescu', '5020000000000', 'test'))
+    repository.departaments[0].patients.append(Patient('test', 'testescu', '5030000000000', 'test'))
+    repository.departaments[0].patients.append(Patient('test', 'testescu', '5040000000000', 'test'))
+    repository.sortDepsAge(26)
+    print(repository)
+    assert repository.departaments[0].name == 'Neurology', 'Departaments not sorted correctly!(2)'
+    assert repository.departaments[1].name == 'Cardiology', 'Departaments not sorted correctly!(2)'
+    print(f"{Fore.GREEN}SortDepsAge_2 tested successfully!{Style.RESET_ALL}")
+    print(f"{Fore.LIGHTGREEN_EX}SortDepsAge tested successfully!{Style.RESET_ALL}")
+    sleep(0.02)
 
 def testSortuVietiiMele():
-    pass
     print(f"{Fore.BLUE}Testing SortuVietiiMele...{Style.RESET_ALL}")
     sleep(0.02)
     repository = Hospital()
@@ -189,10 +219,62 @@ def testSortuVietiiMele():
     repository.departaments.append(dep)
     dep = Departament(3, 'Oncology', 10)
     repository.departaments.append(dep)
-    #cu cat ma adancesc in testele de la functiile de sortare cu atat realizez realizez ca o sa imi ia mai mult sa testez functiile decat mi-a luat sa le fac
+    repository.departaments[0].patients.append(Patient('1', 'a', '1960000000000', 'test'))    
+    repository.departaments[0].patients.append(Patient('2', 'b', '5080000000000', 'test'))
+    repository.departaments[0].patients.append(Patient('3', 'c', '1560000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('4', 'd', '4030000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('5', 'e', '1960000000000', 'test'))
+    repository.departaments[2].patients.append(Patient('6', 'f', '1990000000000', 'test'))
+    repository.departaments[2].patients.append(Patient('7', 'g', '1300000000000', 'test'))
+    repository.departaments[2].patients.append(Patient('8', 'h', '1930000000000', 'test'))
+    repository.departaments[2].patients.append(Patient('9', 'i', '1900000000000', 'test'))
+    repository.sortuVietiiMele()
+    assert repository.departaments[0].name == 'Oncology', 'Departaments not sorted correctly!(1)'
+    assert repository.departaments[1].name == 'Cardiology', 'Departaments not sorted correctly!(1)'
+    assert repository.departaments[2].name == 'Neurology', 'Departaments not sorted correctly!(1)'
+    assert repository.departaments[0].patients[0].firstName == '6', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[0].patients[1].firstName == '7', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[0].patients[2].firstName == '8', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[0].patients[3].firstName == '9', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[1].patients[0].firstName == '1', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[1].patients[1].firstName == '2', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[1].patients[2].firstName == '3', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[2].patients[0].firstName == '4', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[2].patients[1].firstName == '5', 'Patients not sorted correctly!(1)'
+    print(f"{Fore.GREEN}SortuVietiiMele_1 tested successfully!{Style.RESET_ALL}")
+    sleep(0.02)
+    repository.departaments.clear()
+    dep = Departament(1, 'Cardiology', 20)
+    repository.departaments.append(dep)
+    dep = Departament(2, 'Neurology', 15)
+    repository.departaments.append(dep)
+    dep = Departament(3, 'Oncology', 10)
+    repository.departaments.append(dep)
+    repository.departaments[0].patients.append(Patient('2', 'b', '1960000000000', 'test'))    
+    repository.departaments[0].patients.append(Patient('1', 'a', '5080000000000', 'test'))
+    repository.departaments[0].patients.append(Patient('3', 'c', '1560000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('5', 'e', '4030000000000', 'test'))
+    repository.departaments[1].patients.append(Patient('4', 'd', '1960000000000', 'test'))
+    repository.departaments[2].patients.append(Patient('7', 'g', '1990000000000', 'test'))
+    repository.departaments[2].patients.append(Patient('9', 'i', '1300000000000', 'test'))
+    repository.departaments[2].patients.append(Patient('6', 'f', '1930000000000', 'test'))
+    repository.departaments[2].patients.append(Patient('8', 'h', '1900000000000', 'test'))
+    repository.sortuVietiiMele()
+    assert repository.departaments[0].patients[0].firstName == '6', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[0].patients[1].firstName == '7', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[0].patients[2].firstName == '8', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[0].patients[3].firstName == '9', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[1].patients[0].firstName == '1', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[1].patients[1].firstName == '2', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[1].patients[2].firstName == '3', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[2].patients[0].firstName == '4', 'Patients not sorted correctly!(1)'
+    assert repository.departaments[2].patients[1].firstName == '5', 'Patients not sorted correctly!(1)'
+    print(f"{Fore.GREEN}SortuVietiiMele_2 tested successfully!{Style.RESET_ALL}")
+    sleep(0.02)
+    print(f"{Fore.LIGHTGREEN_EX}SortuVietiiMele tested successfully!{Style.RESET_ALL}")
+    sleep(0.02)
 
 def testFilterDepsAge():
-    pass
     print(f"{Fore.BLUE}Testing FilterDepsAge...{Style.RESET_ALL}")
     sleep(0.02)
     repository = Hospital()
