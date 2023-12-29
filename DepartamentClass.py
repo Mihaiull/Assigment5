@@ -1,6 +1,4 @@
-from colorama import Fore, Back, Style
-from os import system
-from time import sleep
+from colorama import Fore, Style
 from PatientClass import Patient
 from SortingFuncs import srt
 #departament class that has id, name, number of beds, and a list of patients

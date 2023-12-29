@@ -53,8 +53,13 @@ class Hospital:
         
     #identify departaments which containes patiens under a given age
     def filterDepsAge(self, age):
-        return flt(self.departaments, key=lambda dep: len(srch(dep.patients, key=lambda patient: patient.age < age)))
-    
+        #departaments with the most patiens first, then the rest
+        #for some reason the sorter doesn't work so manual sort it is
+        #srt(self.departaments, key=lambda dep: len(srch(dep.patients, key=lambda patient: patient.age < age)), reverse=True)
+        for i in range(len(self.departaments)):
+            for j in range(i,len(self.departaments)):
+                if len(srch(self.departaments[i].patients, key=lambda patient: patient.age < age)) > len(srch(self.departaments[j].patients, key=lambda patient: patient.age < age)):
+                    self.departaments[i], self.departaments[j] = self.departaments[j], self.departaments[i]
     #indentify patients from a given departament which contain a given string in their firstName or lastName
     def searchPatients(self, depId, string):
         return srch(self.departaments[depId].patients, key=lambda patient: string in patient.firstName or string in patient.lastName)
@@ -90,3 +95,5 @@ if __name__ == "__main__":
     print("This module is not meant to be run by itself!")
     from main import main
     main()
+
+#5030628410020

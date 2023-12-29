@@ -3,10 +3,11 @@ from datetime import date
 
 def calc_age(codes):
     code = str(codes)
+    dates = int(date.today().year)
     if int(code[0:]) < 3:
-        return date.today().year - int("19" + str(code[1:3]))
+        return dates - int("19" + str(code[1:3]))
     else:
-        return date.today().year - int("20" + str(code[1:3]))
+        return dates - int("20" + str(code[1:3]))
 
 #a patient class that has first name, last name, personal numerical code, and disease
 class Patient:
