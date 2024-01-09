@@ -8,11 +8,12 @@ from Generator import generator
 
 def menu():
     #de ce sa am 17 printuri can pot sa am doar 1
-    print(f"{Fore.YELLOW}0.Exit\n1. Add a departament\n2. Remove a departament\n3. Add a patient\n4. Remove a patient\n5. Sort departaments by number of patients\n6. Sort departaments by patients having the age above a certain value\n7. Sort departaments by number of patients and sort the patients in each departament alphabetically\n8. Identify departaments which containes patiens under a given age\n9. Indentify patients from a given departament which contain a given string in their firstName or lastName\n10. Indentify departaments which contain patients with a given first name\n11. Form groups of k patiens from the same departaments and the same disease(k is given)\n12. Form groups of k departaments having at most p patients that suffer from the same disease(k and p are given)\n{Style.RESET_ALL}")
+    print(f"{Fore.YELLOW}pa. Print Everything\npd. Print Departaments\npp. Print Patients\n0. Exit\n1. Add a departament\n2. Remove a departament\n3. Add a patient\n4. Remove a patient\n5. Sort departaments by number of patients\n6. Sort departaments by patients having the age above a certain value\n7. Sort departaments by number of patients and sort the patients in each departament alphabetically\n8. Identify departaments which containes patiens under a given age\n9. Indentify patients from a given departament which contain a given string in their firstName or lastName\n10. Indentify departaments which contain patients with a given first name\n{Fore.RED}11. Form groups of k patiens from the same departaments and the same disease(k is given)\n12. Form groups of k departaments having at most p patients that suffer from the same disease(k and p are given)\n{Style.RESET_ALL}")
 
 hospital = Hospital()
 #some pre added departaments and patients for testing
 generator(hospital, 5, 10)
+
 def UI():
     try:
         while(True):
@@ -173,7 +174,7 @@ def UI():
                 k = int(input("k: "))
                 print(f"{Fore.GREEN}Groups formed successfully!{Style.RESET_ALL}\n")
                 sleep(0.3)
-                print(hospital.formKGroupsInEachDep(k))
+                print(hospital.backtracking_group_k(k))
                 input("Press enter to continue...")
                 system("cls||clear")
             elif option == '12':
@@ -183,7 +184,7 @@ def UI():
                 p = int(input("p: "))
                 print(f"{Fore.GREEN}Groups formed successfully!{Style.RESET_ALL}\n")
                 sleep(0.3)
-                print(hospital.formKGroupsInEachDepCuP(k, p))
+                print(hospital.backtracking_group_k_p(k, p))
                 input("Press enter to continue...")
                 system("cls||clear")
             else:

@@ -388,31 +388,30 @@ def testFormKGroupsInEachDepCuP():
     repository.departaments.append(dep)
 
 def testAll():
-    # try:    
-    testAddDepartament()
-    testAddPatient()
-    testRemovePatient()
-    testRemoveDepartament()
-    testSortDepsNOP()
-    testSortDepsAge()
-    testSortuVietiiMele()
-    testFilterDepsAge()
-    testSearchPatients()
-    testFilterDepsName()
-    testFormKGroupsInEachDep()
-    testFormKGroupsInEachDepCuP()
-    # except AssertionError as ae:
-    #     print(f"{Fore.RED}{ae}{Style.RESET_ALL}")
-    #     sleep(0.02)
-    #     print(f"{Back.RED}{Fore.LIGHTRED_EX}Tests failed!{Style.RESET_ALL}")
-    #     sleep(0.02)
-    #     return
-    # except Exception as ex:
-    #     print(f"{Fore.RED}{ex}{Style.RESET_ALL}")
-    #     sleep(0.02)
-    #     print(f"{Back.RED}{Fore.LIGHTRED_EX}Tests failed!{Style.RESET_ALL}")
-    #     sleep(0.02)
-    #     return
+    try:    
+        testAddDepartament()
+        testAddPatient()
+        testRemovePatient()
+        testRemoveDepartament()
+        testSortDepsNOP()
+        testSortDepsAge()
+        testSortuVietiiMele()
+        testSearchPatients()
+        testFilterDepsName()
+        testFormKGroupsInEachDep()
+        testFormKGroupsInEachDepCuP()
+    except AssertionError as ae:
+         print(f"{Fore.RED}{ae}{Style.RESET_ALL}")
+         sleep(0.02)
+         print(f"{Back.RED}{Fore.LIGHTRED_EX}Tests failed!{Style.RESET_ALL}")
+         sleep(0.02)
+         return
+    except Exception as ex:
+         print(f"{Fore.RED}{ex}{Style.RESET_ALL}")
+         sleep(0.02)
+         print(f"{Back.RED}{Fore.LIGHTRED_EX}Tests failed!{Style.RESET_ALL}")
+         sleep(0.02)
+         return
     print(f"{Fore.LIGHTGREEN_EX}Tests passed successfully!{Style.RESET_ALL}")
     sleep(2)
     system('cls||clear')
