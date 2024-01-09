@@ -12,7 +12,7 @@ def menu():
 
 hospital = Hospital()
 #some pre added departaments and patients for testing
-generator(hospital, 5, 5)
+generator(hospital, 5, 10)
 def UI():
     try:
         while(True):

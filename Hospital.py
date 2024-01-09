@@ -70,13 +70,17 @@ class Hospital:
     
     #form groups of k patiens from the same departaments and the same disease(k is given):
     def formKGroupsInEachDep(self, k):
-        printedlist = []
-        for i in range(len(self.departaments)):
-            for j in range(len(self.departaments[i].patients)):
-                if len(self.departaments[i].patients[j].disease) == k:
-                    printedlist.append(f"{Fore.GREEN}Group {Fore.WHITE}{j//k+1}{Fore.GREEN} from departament {Fore.WHITE}{self.departaments[i].name}{Fore.GREEN}:\n{Fore.WHITE}{self.departaments[i].patients[j:j+k]}")
-        return printedlist
-    
+        for dep in self.departaments:
+            #first sort by disease
+            srt(dep.patients, key=lambda patient: patient.disease)
+            #then form groups of k patients
+            for i in range(0, len(dep.patients), k):
+                for j in range(i, i+k):
+                    if i==len(dep.patients)-1:
+                        break
+                    if dep.patients[i].disease != dep.patients[j].disease:
+                        i+=1
+                    print(f"{Fore.GREEN}Group {Fore.WHITE}{i//k+1}{Fore.GREEN} from departament {Fore.WHITE}{dep.name}{Fore.GREEN}:\n{Fore.WHITE}{dep.patients[i:i+k]}")
     #form groups of k departaments having at most p patients that suffer from the same disease(k and p are given)
     def formKGroupsInEachDepCuP(self, k, p):
         printedlist = []

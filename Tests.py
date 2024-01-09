@@ -202,7 +202,6 @@ def testSortDepsAge():
     repository.departaments[0].patients.append(Patient('test', 'testescu', '5030000000000', 'test'))
     repository.departaments[0].patients.append(Patient('test', 'testescu', '5040000000000', 'test'))
     repository.sortDepsAge(24)
-    print(repository)
     assert repository.departaments[0].name == 'Neurology', 'Departaments not sorted correctly!(2)'
     assert repository.departaments[1].name == 'Cardiology', 'Departaments not sorted correctly!(2)'
     print(f"{Fore.GREEN}SortDepsAge_2 tested successfully!{Style.RESET_ALL}")
