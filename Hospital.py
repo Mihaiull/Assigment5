@@ -70,14 +70,13 @@ class Hospital:
     
     #form groups of k patiens from the same departaments and the same disease(k is given):
     def backtracking_group_k(self, k:int, index=0, group=[], groups=[]):
-        departaments = self.departaments
         if len(group) == k:
             groups.append(group[:])
             return
-        for i in range(index, len(departaments)):
-            for j in range(len(departaments[i].patients)):
-                if departaments[i].patients[j].disease == departaments[index].patients[0].disease:
-                    group.append(departaments[i].patients[j])
+        for i in range(index, len(self.departaments)):
+            for j in range(0,len(self.departaments[i].patients)-1):
+                if self.departaments[i].patients[j].disease == self.departaments[index].patients[0].disease:
+                    group.append(self.departaments[i].patients[j])
                     self.backtracking_group_k(k, i+1, group, groups)
                     group.pop()
         return groups

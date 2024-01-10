@@ -2,7 +2,6 @@ from DepartamentClass import Departament
 from PatientClass import Patient
 from Hospital import Hospital
 from colorama import Fore, Back, Style
-from SortingFuncs import srt, flt, srch
 from os import system
 from time import sleep
 
